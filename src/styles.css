@@ -4,3 +4,8 @@ body, html {
     padding: 0;
     height: 100%;
 }
+
+:root {
+    --primary-color: #27ae60;
+    --secondary-color: #ffffff;
+}

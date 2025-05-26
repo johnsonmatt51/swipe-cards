@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: #27ae60;
-    color: white;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
     z-index: 10;
 }
@@ -18,16 +18,16 @@
 
     .bottom-nav-button {
         padding: 1.5rem 0;
-        background: #27ae60;
+        background: var(--primary-color);
         flex: 1;
         font-size: 1.5rem;
         border: none;
-        color: white;
+        color: var(--secondary-color);
     }
 
     .is-selected {
-        color: #27ae60;
-        background: white;
+        color: var(--primary-color);
+        background: var(--secondary-color);
     }
 }
 
