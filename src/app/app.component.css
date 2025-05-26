@@ -1,0 +1,38 @@
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #27ae60;
+    color: white;
+    text-align: center;
+    z-index: 10;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+
+    .bottom-nav-button {
+        padding: 1.5rem 0;
+        background: #27ae60;
+        flex: 1;
+        font-size: 1.5rem;
+        border: none;
+        color: white;
+    }
+
+    .is-selected {
+        color: #27ae60;
+        background: white;
+    }
+}
+
+.content {
+    padding-top: 60px;   /* space for top nav */
+    padding-bottom: 60px; /* space for bottom nav */
+    min-height: calc(100vh - 120px);
+}
