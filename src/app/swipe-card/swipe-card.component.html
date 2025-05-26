@@ -1,0 +1,26 @@
+<div class="card-container">
+    <div
+        class="card"
+        *ngFor="let card of visibleCards; let i = index"
+        [class.animate-left]="animationDirection === 'LEFT' && i === 0"
+        [class.animate-right]="animationDirection === 'RIGHT' && i === 0"
+        [class.animate-up]="animationDirection === 'UP' && i === 0"
+        [ngStyle]="{
+            'z-index': visibleCards.length - i,
+            'transform': i === 0 ?
+                'translate(' + currentX + 'px, ' + currentY + 'px) rotate(' + currentX / 10 + 'deg)' :
+                'scale(' + (1 - i * 0.05) + ') translateY(' + (i * 10) + 'px)'
+}"
+        (touchstart)="i === 0 && onTouchStart($event)"
+        (touchmove)="i === 0 && onTouchMove($event)"
+        (touchend)="i === 0 && onTouchEnd($event)"
+    >
+        <div class="card-image">
+            <div class="text-overlay">{{ card }}</div>
+        </div>
+
+        <div class="icon red-icon" (click)="swipe('LEFT')">✘</div>
+        <div class="icon green-icon" (click)="swipe('RIGHT')">✔</div>
+        <div class="icon blue-icon" (click)="swipe('UP')">★</div>
+    </div>
+</div>
