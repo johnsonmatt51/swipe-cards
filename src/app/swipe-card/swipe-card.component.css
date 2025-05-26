@@ -26,12 +26,23 @@
 /* Top square image placeholder */
 .card-image {
     position: relative;
-    width: 100%;
-    padding-top: 150%; /* 1:1 aspect ratio square */
-    background: linear-gradient(135deg, #a2c4f7, #3b70f3);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.card-photo {
+    width: -webkit-fill-available;
+}
+
+.button-underlay {
+    height: 12vh;
+    background: #e4ebdc;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    bottom: 0;
 }
 
 /* Text overlay on top image */
@@ -42,7 +53,7 @@
     color: white;
     font-weight: bold;
     font-size: 2rem;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
 
 /* Icon base styles */

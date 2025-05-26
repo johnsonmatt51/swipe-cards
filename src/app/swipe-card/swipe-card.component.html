@@ -2,9 +2,9 @@
     <div
         class="card"
         *ngFor="let card of visibleCards; let i = index"
-        [class.animate-left]="animationDirection === 'LEFT' && i === 0"
-        [class.animate-right]="animationDirection === 'RIGHT' && i === 0"
-        [class.animate-up]="animationDirection === 'UP' && i === 0"
+        [class.animate-left]="animationDirection === 'left' && i === 0"
+        [class.animate-right]="animationDirection === 'right' && i === 0"
+        [class.animate-up]="animationDirection === 'up' && i === 0"
         [ngStyle]="{
             'z-index': visibleCards.length - i,
             'transform': i === 0 ?
@@ -16,11 +16,13 @@
         (touchend)="i === 0 && onTouchEnd($event)"
     >
         <div class="card-image">
+            <img class="card-photo" [src]="card.imageUrl" alt="{{ card.title }}" />
             <div class="text-overlay">{{ card.title }}</div>
         </div>
+        <div class="button-underlay"></div>
 
-        <div class="icon red-icon" (click)="swipe('LEFT')">✘</div>
-        <div class="icon green-icon" (click)="swipe('RIGHT')">✔</div>
-        <div class="icon blue-icon" (click)="swipe('UP')">★</div>
+        <div class="icon red-icon" (click)="swipe('left')">✘</div>
+        <div class="icon green-icon" (click)="swipe('right')">✔</div>
+        <div class="icon blue-icon" (click)="swipe('up')">★</div>
     </div>
 </div>

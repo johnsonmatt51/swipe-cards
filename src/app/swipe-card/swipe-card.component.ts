@@ -65,6 +65,7 @@ export class SwipeCardComponent {
 
         setTimeout(() => {
             const swipedItem = this.cards.shift();
+            console.log(this.cards)
 
             if (swipedItem) {
                 switch (direction) {

@@ -12,38 +12,38 @@ export class FoodItem {
 
     static getExampleArray(): FoodItem[] {
         return [
-            new FoodItem("Dairy", "", [
-                new FoodItem("Milk", "", [
-                    new FoodItem("Cow Milk"),
-                    new FoodItem("Goat Milk")
+            new FoodItem("Dairy", "dairy.png", [
+                new FoodItem("Milk", "milk.png", [
+                    new FoodItem("Cow Milk", "cow-milk.png"),
+                    new FoodItem("Goat Milk", "goat-milk.png")
                 ]),
-                new FoodItem("Cheese", "", [
-                    new FoodItem("Cheddar"),
-                    new FoodItem("Mozzarella")
+                new FoodItem("Cheese", "cheese.png", [
+                    new FoodItem("Cheddar", "cheddar.png"),
+                    new FoodItem("Mozzarella", "mozzarella.png")
                 ]),
-                new FoodItem("Yogurt", "", [
-                    new FoodItem("Greek Yogurt"),
-                    new FoodItem("Flavored Yogurt")
+                new FoodItem("Yogurt", "yogurt.png", [
+                    new FoodItem("Greek Yogurt", "greek-yogurt.png"),
+                    new FoodItem("Flavored Yogurt", "flavoured-yogurt.png")
                 ])
             ]),
-            new FoodItem("Meat", "", [
-                new FoodItem("Beef", "", [
-                    new FoodItem("Ground Beef"),
-                    new FoodItem("Steak")
+            new FoodItem("Meat", "meat.png", [
+                new FoodItem("Beef", "beef.png", [
+                    new FoodItem("Ground Beef", "ground-beef.png"),
+                    new FoodItem("Steak", "steak.png")
                 ]),
-                new FoodItem("Chicken", "", [
-                    new FoodItem("Breast"),
-                    new FoodItem("Wings")
+                new FoodItem("Chicken", "chicken.png", [
+                    new FoodItem("Breast", "chicken-breast.png"),
+                    new FoodItem("Wings", "chicken-wings.png")
                 ])
             ]),
-            new FoodItem("Fruit", "", [
-                new FoodItem("Apple", "", [
-                    new FoodItem("Granny Smith"),
-                    new FoodItem("Pink Lady")
+            new FoodItem("Fruit", "fruit.png", [
+                new FoodItem("Apple", "apple.png", [
+                    new FoodItem("Granny Smith", "granny-smith.png"),
+                    new FoodItem("Pink Lady", "pink-lady.png")
                 ]),
-                new FoodItem("Banana", "", [
-                    new FoodItem("Ripe Banana"),
-                    new FoodItem("Green Banana")
+                new FoodItem("Banana", "banana.png", [
+                    new FoodItem("Ripe Banana", "ripe-banana.png"),
+                    new FoodItem("Green Banana", "green-banana.png")
                 ])
             ])
         ];
