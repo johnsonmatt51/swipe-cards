@@ -12,11 +12,12 @@ export class AppComponent {
     cards = ['Card 1', 'Card 2', 'Card 3', 'Card 4'];
     currentIndex = 0;
 
-    startX = 0;
-    currentX = 0;
-
-    startY = 0;
-    currentY = 0;
+    coordinates: ICoordinates = {
+        startX: 0,
+        startY: 0,
+        currentX: 0,
+        currentY: 0,
+    }
 
     animationDirection: string | null = null;
 
@@ -24,27 +25,35 @@ export class AppComponent {
         return this.cards.slice(this.currentIndex, this.currentIndex + 3);
     }
 
+    get currentX() {
+        return this.coordinates.currentX;
+    }
+
+    get currentY() {
+        return this.coordinates.currentY;
+    }
+
     onTouchStart(event: TouchEvent) {
-        this.startX = event.touches[0].clientX;
-        this.startY = event.touches[0].clientY;
+        this.coordinates.startX = event.touches[0].clientX;
+        this.coordinates.startY = event.touches[0].clientY;
     }
 
     onTouchMove(event: TouchEvent) {
-        this.currentX = event.touches[0].clientX - this.startX;
-        this.currentY = event.touches[0].clientY - this.startY;
+        this.coordinates.currentX = event.touches[0].clientX - this.coordinates.startX;
+        this.coordinates.currentY = event.touches[0].clientY - this.coordinates.startY;
     }
 
     onTouchEnd(event: TouchEvent) {
-        if (this.currentX > 120) {
-            this.swipe('right');
-        } else if (this.currentX < -120) {
-            this.swipe('left');
-        } else if (this.currentY < -120) {
-            this.swipe('up');
+        if (this.coordinates.currentX > 120) {
+            this.swipe(ESwipeDirection.RIGHT);
+        } else if (this.coordinates.currentX < -120) {
+            this.swipe(ESwipeDirection.LEFT);
+        } else if (this.coordinates.currentY < -120) {
+            this.swipe(ESwipeDirection.UP);
         } else {
             // reset position if no swipe
-            this.currentX = 0;
-            this.currentY = 0;
+            this.coordinates.currentX = 0;
+            this.coordinates.currentY = 0;
         }
     }
 
@@ -57,15 +66,22 @@ export class AppComponent {
             }
             this.animationDirection = null;
             // reset drag coords so next card is reset
-            this.currentX = 0;
-            this.currentY = 0;
+            this.coordinates.currentX = 0;
+            this.coordinates.currentY = 0;
         }, 300)
     }
 }
 
 
 enum ESwipeDirection {
-    UP = "UP",
-    LEFT = "LEFT",
-    RIGHT = "RIGHT",
+    UP = "up",
+    LEFT = "left",
+    RIGHT = "right",
+}
+
+interface ICoordinates {
+    startX: number,
+    startY: number,
+    currentX: number,
+    currentY: number
 }
