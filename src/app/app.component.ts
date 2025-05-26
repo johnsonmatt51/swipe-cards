@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'app-root',
@@ -14,8 +14,11 @@ export class AppComponent {
     selectedPage: ESelectedPage = ESelectedPage.SWIPE;
     pages = ESelectedPage;
 
+    constructor(private route: Router) {
+    }
+
     isSelected(page: string) {
-        return this.selectedPage === page;
+        return this.route.url?.includes(page);
     }
 
     select(page: ESelectedPage) {
@@ -25,7 +28,7 @@ export class AppComponent {
 }
 
 enum ESelectedPage {
-    SWIPE = "SWIPE",
-    PROFILE = "PROFILE",
-    SETTINGS = "SETTINGS",
+    SWIPE = "swipe",
+    PROFILE = "profile",
+    SETTINGS = "settings",
 }

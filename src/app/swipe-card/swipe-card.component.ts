@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { Router } from '@angular/router';
+import { FoodItem } from "../models/food-item";
 
 @Component({
     selector: 'app-swipe-card',
@@ -9,9 +11,8 @@ import { CommonModule } from "@angular/common";
     styleUrl: './swipe-card.component.css'
 })
 export class SwipeCardComponent {
-    cards = ['Card 1', 'Card 2', 'Card 3', 'Card 4'];
-    currentIndex = 0;
-
+    likedItems: FoodItem[] = [];
+    dislikedItems: FoodItem[] = [];
     coordinates: ICoordinates = {
         startX: 0,
         startY: 0,
@@ -20,9 +21,12 @@ export class SwipeCardComponent {
     }
 
     animationDirection: string | null = null;
+    cards: FoodItem[] = FoodItem.getExampleArray();
+
+    constructor(private router: Router) {}
 
     get visibleCards() {
-        return this.cards.slice(this.currentIndex, this.currentIndex + 3);
+        return this.cards.slice(0, 3)
     }
 
     get currentX() {
@@ -51,7 +55,6 @@ export class SwipeCardComponent {
         } else if (this.coordinates.currentY < -120) {
             this.swipe(ESwipeDirection.UP);
         } else {
-            // reset position if no swipe
             this.coordinates.currentX = 0;
             this.coordinates.currentY = 0;
         }
@@ -59,11 +62,42 @@ export class SwipeCardComponent {
 
     swipe(direction: string) {
         this.animationDirection = direction;
+
         setTimeout(() => {
-            this.currentIndex++;
-            if (this.currentIndex >= this.cards.length) {
-                this.currentIndex = 0;
+            const swipedItem = this.cards.shift();
+
+            if (swipedItem) {
+                switch (direction) {
+                    case ESwipeDirection.RIGHT:
+                        this.likedItems.push(swipedItem);
+                        if (swipedItem.children?.length) {
+                            this.cards.push(...swipedItem.children);
+                        }
+                        break;
+
+                    case ESwipeDirection.LEFT:
+                        this.dislikedItems.push(swipedItem);
+                        break;
+
+                    case ESwipeDirection.UP:
+                        swipedItem.superLiked = true;
+                        this.likedItems.push(swipedItem);
+                        if (swipedItem.children?.length) {
+                            this.cards.push(...swipedItem.children);
+                        }
+                        break;
+                }
             }
+
+            if (this.cards.length === 0) {
+                this.router.navigate(['/profile'], {
+                    state: {
+                        likedItems: this.likedItems,
+                        dislikedItems: this.dislikedItems
+                    }
+                });
+            }
+
             this.animationDirection = null;
             // reset drag coords so next card is reset
             this.coordinates.currentX = 0;

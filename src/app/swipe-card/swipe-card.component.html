@@ -16,7 +16,7 @@
         (touchend)="i === 0 && onTouchEnd($event)"
     >
         <div class="card-image">
-            <div class="text-overlay">{{ card }}</div>
+            <div class="text-overlay">{{ card.title }}</div>
         </div>
 
         <div class="icon red-icon" (click)="swipe('LEFT')">✘</div>

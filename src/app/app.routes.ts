@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: 'swipe-card',
+        path: 'swipe',
         loadComponent: () => import('./swipe-card/swipe-card.component').then(m => m.SwipeCardComponent)
     },
     {
-        path: 'profile-page',
+        path: 'profile',
         loadComponent: () => import('./profile-page/profile-page.component').then(m => m.ProfilePageComponent)
     },
     {
