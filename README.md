@@ -2,17 +2,24 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
 
-generated with node 22
+## Prerequisites
+
+- node 22 (use [nvm](https://github.com/nvm-sh/nvm) to manage node versions)
 
 ## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm install
+```
+```bash
+npm run start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4200/swipe`. The application will automatically reload whenever you modify any of the source files.
+
+To use the Swipe functionality, open DevTools and toggle device toolbar
 
 ## Code scaffolding
 
